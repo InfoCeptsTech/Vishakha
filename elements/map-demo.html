@@ -1,0 +1,106 @@
+<!-- Polymer web component created to display battery chart.-->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+  <style is="custom-style" include="iron-flex"></style> 
+  <style>
+ #main {
+    display: inline-flex;
+}
+
+
+  </style>
+ <dom-module id="map-demo">
+ <template> 
+  <div id="main">
+  <div style="margin-top: 8px;">Zoom</div>
+<div style="margin-top: 8px;padding-left: 10px;"><button on-click="_valueChangeMinus">-</button></div>
+<div><paper-slider id="sliderzoom" min="5" max="100" value="{{_value2}}" pin></paper-slider></div>
+<div style="margin-top: 8px;"><button on-click="_valueChangePlus">+</button></div>
+</div>
+<!--  <paper-button on-click="_confirmClick">Confirm</paper-button> -->
+       <google-map id="mapInstance" latitude=36.7373554 longitude=-104.6053002 zoom="5" styles="{color:red}"
+  disable-default-ui=true map-type="terrain">
+   <template is="dom-repeat" items="{{marker}}">
+ <google-map-marker latitude="{{item.latitudine}}" longitude="{{item.longitudine}}"  icon="../elements/red_triangle.png"
+      title="{{item.title}}"></google-map-marker>
+      </template>
+  </google-map>
+   <iron-ajax id="ajax" url="../elements/map-demo.json" on-response="handleResponse" auto></iron-ajax>
+    </template>
+
+ <script>
+    //Init polymer component
+    (function() {
+        Polymer({
+            is: 'map-demo',
+            properties:{
+                _value2: {
+                type: Number,
+                value:10,
+                observer: '_value2Changed'
+        }
+       },
+     handleResponse: function() {
+            //Json parsing done here
+            this.jsonResponse = this.$.ajax.lastResponse;
+            console.log(this.jsonResponse)
+            
+
+             var allDataArr = this.jsonResponse;
+            //Get all json data
+           this.marker = this.jsonResponse;
+        },
+    // ready: function() {
+    //         this.marker = [
+    //             {latitudine: '36.7373554', longitudine: '-104.6053002'},
+    //             {latitudine: '41.876', longitudine: '-87.624'}
+    //         ];
+    //     },
+     _confirmClick: function(event){
+            console.log('Event:'+event);
+        },
+    _value2Changed: function(val) {
+        console.log("this is paper-slider #2  value "+ val);
+        var sliderzoom = document.querySelector('#sliderzoom');
+             var map = document.querySelector('#mapInstance');
+             sliderzoom.addEventListener('value-change', function() {
+              var label = sliderzoom.value;
+              console.log(label);
+              document.querySelector('google-map').zoom = Number(label);
+              });
+      },
+       _valueChangeMinus:function(){
+        console.log('Inside value change minus function');
+         var sliderzoom = document.querySelector('#sliderzoom');
+             var map = document.querySelector('#mapInstance');
+              var label = sliderzoom.value;
+              console.log(label);
+              var dec = label-5;
+              console.log(dec);
+              sliderzoom.value = dec;
+           //   document.querySelector('google-map').zoom = Number(dec);
+              sliderzoom.addEventListener('value-change', function() {
+             document.querySelector('google-map').zoom = Number(dec);
+              });
+      },
+       _valueChangePlus:function(){
+        console.log('Inside value change plus function');
+         var sliderzoom = document.querySelector('#sliderzoom');
+             var map = document.querySelector('#mapInstance');
+              var label = sliderzoom.value;
+              console.log(label);
+              var increment = label+5;
+              console.log(increment);
+              sliderzoom.value = increment;
+           //   document.querySelector('google-map').zoom = Number(dec);
+              sliderzoom.addEventListener('value-change', function() {
+             document.querySelector('google-map').zoom = Number(increment);
+              });
+      }
+     
+            
+    });
+
+    })();
+    </script>
+  </dom-module>      }

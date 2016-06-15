@@ -1,0 +1,66 @@
+<!doctype html>
+<!-- Copyright (c) 2015 Google Inc. All rights reserved. -->
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>Google Map Poly demo</title>
+  <script src="../bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+<!--   <link rel="import" href="../bower_components/google-map.html">
+  <link rel="import" href="../google-map-poly.html"> -->
+  <link rel="import" href="elements/elements.html">
+   <!--  <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+    <style is="custom-style" include="iron-flex"></style> -->
+  <style>
+     body {
+      margin: 0;
+      height: 100vh;
+    }
+    #toggleEdit {
+      position: absolute;
+      top: 10px;
+      left: 120px;
+    }
+   /* google-map {
+    height: 800px;
+  }
+   paper-slider {
+        --paper-slider-active-color: red;
+        --paper-slider-knob-color: red;
+        --paper-slider-height: 30px;
+        width:500px;
+      }*/
+  
+  </style>
+</head>
+<body>
+ <!--  <div class="layout horizontal">
+  <div style="margin-top: 8px;">Zoom</div>
+<div style="margin-top: 8px;padding-left: 10px;">-</div>
+<div><paper-slider id="sliderzoom" min="10" max="100" value="11" pin></paper-slider></div>
+<div style="margin-top: 8px;">+</div>
+</div> -->
+<map-demo></map-demo>
+ <!--  <google-map id="mapInstance" latitude=36.7373554 longitude=-104.6053002 zoom="11" 
+  disable-default-ui=true map-type="terrain"></google-map> 
+  <google-map latitude="41.876" longitude="-87.624" zoom="11" kml="http://googlemaps.github.io/js-v2-samples/ggeoxml/cta.kml"></google-map>-->
+   <!-- <map-dmeo></map-demo> -->
+</body>
+<!--<script>
+  //         var sliderzoom = document.querySelector('#sliderzoom');
+  //          var map = document.querySelector('#mapInstance');
+  //           sliderzoom.addEventListener('value-change', function() {
+  //             var label = sliderzoom.value;
+  //             console.log(label);
+  //             alert(label);
+  //             document.querySelector('google-map').zoom = Number(label);
+  //              document.querySelector('google-map').latitude = 36.7373554;
+  //             document.querySelector('google-map').longitude = -104.6053002;
+              
+               
+  //           });
+  //            map.addEventListener('google-map-ready', function(e) {
+  //   alert('Map loaded!');
+  // });
+       //   </script>-->
+</html>
+ 

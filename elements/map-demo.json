@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Stockholm",
+    "latitudine": 36.7373554,
+    "longitudine": -104.6053002,
+    "description": "Stockholm is the capital and the largest city of Sweden and constitutes the most populated urban area in Scandinavia with a population of 2.1 million in the metropolitan area (2010)"
+  },
+  {
+    "title": "Oslo",
+    "latitudine": 41.876,
+    "longitudine": -87.624,
+    "description": "Oslo is a municipality, and the capital and most populous city of Norway with a metropolitan population of 1,442,318 (as of 2010)."
+  }
+]
